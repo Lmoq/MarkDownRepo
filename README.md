@@ -7,6 +7,10 @@
     - [Data Types](#data-types)
     - [Variable Declaration](#variable-declaration)
 
+- Variable Assignments
+    - [Declaration with Assignment (Combined)](#declaration-with-assignment-combined)
+    - [Declaration, Then Assignment Later](#declaration-then-assignment-later)
+
 - Java Arithmetic, Print Statement, and Logical Operators
     - [Arithmetic Operators](#arithmetic-operators)
     - [Compound Assignment Operators](#compound-assignment-operators)
@@ -151,6 +155,57 @@ public class Main{
     } 
 }
 ```
+# Variable Value Assignment
+---
+## Declaration with Assignment (Combined)
+Creates the variable and gives it a value in a single line — the most common way to write it.
+```java
+dataType variableName = value;
+```
+> dataType - the kind of value being stored (int, double, String, boolean, etc.)
+>
+> variableName - the identifier you'll use to refer to this value later
+>
+> value - the initial value, assigned the moment the variable is created
+
+Example
+```java
+int age = 21;
+
+System.out.println(age); // 21
+```
+> age is declared as an int and immediately given the value 21 — both steps happen in one statement.
+- This is the most common style since it's short and the variable is never left without a value.
+
+---
+## Declaration, Then Assignment Later
+Splits the process into two steps — the variable is declared first, and given a value at some point afterward.
+```java
+dataType variableName;
+
+// ... some other code may run here ...
+
+variableName = value;
+```
+> Declaring without assigning reserves the variable's name and type, but leaves it empty for now
+>
+> The variable must be assigned a value before it's read anywhere — Java won't compile if you try to use it while still empty
+>
+> This pattern is useful when the value isn't known yet at the point of declaration — e.g., it depends on user input, a calculation, or a condition checked later
+
+Example
+```java
+int score;
+
+score = 75;
+
+System.out.println(score); // 75
+```
+> score is declared first with no value. It's only usable once the second line, score = 75;, actually gives it one.
+- If System.out.println(score) had been placed before score = 75;, the code wouldn't compile — Java requires local variables to be assigned before they're used.
+
+
+
 # Java Arithmetic, Print Statement, and Logical Operators
 # Arithmetic Operators
 Performs basic math calculations on numeric data types like `int`, `double`, and `float`.
