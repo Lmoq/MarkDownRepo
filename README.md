@@ -22,7 +22,9 @@
     - [If • Else Statement](#if--else-statement)
     - [If • Else-If Statement](#if--else-if-statement)
     - [If • Else-If • Else Statement](#if--else-if--else-statement)
+    - [Switch Statement](#switch-statement)
 
+- [Increment and Decrement Operators](#increment-and-decrement-operators)
 - Java Loop Statements
     - [While Loop](#while-loop)
     - [Do-While Loop](#do-while-loop)
@@ -30,86 +32,116 @@
 
 ---
 # Java Syntax
-Java class definition
-```java
-public class Main{}
-```
-> public - Java access modifier
->
-> class - Java keyword 
->
-> Main­ - Identifier, a user defined name or label ( Eg. MyClass, Hellokitty, MaaMaaaa ). Should always start with capital letter.
+Java programs are organized into classes, and every Java application starts in a `main` method.
 
-This function definition will be the entry point of the program and will be placed inside the "_Main class_".
 ```java
-public static void main( String[] args ){}
-``` 
-> public - Java access modifier
->
-> static - Non-access modifier keyword for methods and attributes.
->
-> void - Return data type
->
-> main - A required method identifier for program entry point.
-
-When put together it will look like... ```Main class{ main method }```
-```java
-public class Main{ public static void main( String[] args ){} }
-```
-- Note that the ```Main``` class and ```main``` method are different identifiers
-- The ```Main``` inside ```public class Main``` is a custom identifier, you can change it but the source code's file name should also be saved under this class name.
-> Example : 
->
-> public class Main{} -> saved to _Main.java_
->
-> public class HelloKitty{} -> saved to _HelloKitty.java_
-- While the ```main``` inside the ```public static void main( String[] args )``` is a fixed identifier.
----
-## Writing code
-The source code can be written on a single line or multiline with indentations.
-- Single line
-```java
-public class Main{ public static void main( String[] args ){} }
-```
-- Multiline with inconsistent indentations
-```java
-public class Main{ 
-         public static void main( String[] args ){
-// Comment - start of program
-  } 
+public class Main {
+    public static void main(String[] args) {
+        // code starts here
     }
-```
-- We can write codes like this and it will run perfectly fine since Java compiler isn't strict and sensitive on white spaces.
-
-But for the sake of readability, we use proper and consistent indentation.
-> We use tabs or spaces to indent
-```java
-public class Main{ d
-    public static void main( String[] args ){
-        // Comment - start of program
-    } 
 }
 ```
 
+> `public` - access modifier, tells Java that this class or method can be accessed from outside its own class
+>
+> `class` - Java keyword used to define a class
+>
+> `Main` - a custom class name chosen by the programmer; it should begin with a capital letter
+>
+> `static` - tells Java this method belongs to the class itself
+>
+> `void` - means the method does not return a value
+>
+> `main` - the required method name where the program starts running
+>
+> `String[] args` - stores command-line arguments passed to the program
+
+The class name and the method name are different things.
+- `Main` is the name of the class you create.
+- `main` is the special method Java looks for when the program starts.
+
+Example:
+```java
+public class HelloKitty {
+    public static void main(String[] args) {
+        System.out.println("Hello, Kitty!");
+    }
+}
+```
+> If the class name is `HelloKitty`, the file should usually be saved as `HelloKitty.java`.
+
 ---
-## Data Types
+## Writing code
+Java code can be written on one line or across multiple lines. The compiler does not care much about spaces, but proper indentation makes the code easier to read.
 
-### Primitive Data types
-| Type | Value |
-|-|-|
-| char | Single characters enclosed with singe quotes( e.g., 'a' 'b' '!' '$') |
-| byte | -128 to 127 |
-| short | -32,768 to 32,767 |
-| int| -2,147,483,648 to 2,147,483,647 |
-| long | ±9.22e18 |
-| float | 3.141592 |
-| double | 3.1415926535897932 |
+Single line:
+```java
+public class Main { public static void main(String[] args) {} }
+```
 
-### Reference Data types
-| Type | Description |
-|-|-|
-| String | Sequence of characters enclosed with double quotes( e.g., "Some phrase" )
-| Scanner | A Java class located in java.util package
+Multiline with inconsistent indentation:
+```java
+public class Main {
+         public static void main(String[] args) {
+// comment
+  }
+    }
+```
+
+For readability, we usually format it neatly:
+```java
+public class Main {
+    public static void main(String[] args) {
+        // comment
+    }
+}
+```
+
+> Use tabs or spaces to indent your code consistently.
+>
+> Clean formatting helps you and other programmers read the code more easily.
+
+---
+# Data Types
+A data type tells Java what kind of value a variable can store. Java has primitive types and reference types.
+
+## Primitive Data Types
+| Type | Description | Example |
+|---|---|---|
+| `char` | Stores a single character in single quotes | `'a'`, `'B'`, `'!'` |
+| `byte` | Small integer value | `-128` to `127` |
+| `short` | Small integer value | `-32,768` to `32,767` |
+| `int` | Common integer type | `-2,147,483,648` to `2,147,483,647` |
+| `long` | Large integer value | `123456789012L` |
+| `float` | Decimal number with less precision | `3.14f` |
+| `double` | Decimal number with more precision | `3.1415926535` |
+
+## Reference Data Types
+| Type | Description | Example |
+|---|---|---|
+| `String` | A sequence of characters | `"Hello"` |
+| `Scanner` | A class from `java.util` used to read input | `Scanner input = new Scanner(System.in);` |
+
+> Primitive types store simple values like numbers and characters directly.
+>
+> Reference types store objects or classes, such as `String` and `Scanner`.
+
+Example:
+```java
+int age = 21;
+double price = 19.99;
+char grade = 'A';
+String name = "Alice";
+```
+
+> `int` holds whole numbers.
+>
+> `double` holds decimal numbers.
+>
+> `char` holds one character.
+>
+> `String` holds text.
+
 ---
 
 # Variable Declaration
@@ -126,12 +158,12 @@ int number;
 - We can declare multiple variables with different types.
 ```java
 int number;
-boolean areUsure;
+boolean areYouSure;
 char character;
 ```
-> This can be done multilne or on a single line
+> These declarations can be written on multiple lines or on a single line.
 ```java
-int number; boolean areUsure; char character;
+int number; boolean areYouSure; char character;
 ```
 You can also make this multi-line declaration of variables with same type on a single line.
 ```java
@@ -151,7 +183,7 @@ public class Main{
     public static void main( String[] args ){
         // We can declare multiple variables with different types.
         int number;
-        boolean areUsure;
+        boolean areYouSure;
         char character;
 
         // You can also write declaration of variables with same data type on a single line.
@@ -192,7 +224,7 @@ dataType variableName;
 
 variableName = value;
 ```
-> Declaring without assigning reserves the variable's name and type, but leaves it empty for now
+> Declaring without assigning gives the variable a name and type, but no value yet.
 >
 > The variable must be assigned a value before it's read anywhere — Java won't compile if you try to use it while still empty
 >
@@ -590,9 +622,141 @@ public class Main{
 ```
 
 ---
-# While Loop
-A while loop repeats a block of code as long as a condition is true.
+# Switch Statement
+A switch statement is used when you want to compare one value against several possible cases.
 
+```java
+int day = 3;
+
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+        break;
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
+        break;
+    default:
+        System.out.println("Other day");
+        break;
+}
+```
+
+> switch - Java keyword
+>
+> day - the value being checked
+>
+> case - each possible value to compare against
+>
+> break - stops the switch after a matching case
+>
+> default - runs when no case matches
+
+> Since `day` is 3, the program matches `case 3` and prints `Wednesday`.
+
+### What happens without `break`?
+If you do not use `break`, Java will continue running the next case blocks even after a match is found. This is called fall-through.
+
+```java
+int day = 3;
+
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+    case 2:
+        System.out.println("Tuesday");
+    case 3:
+        System.out.println("Wednesday");
+    default:
+        System.out.println("Other day");
+}
+```
+
+> Without `break`, once `case 3` matches, Java keeps going and executes the next cases too.
+>
+> The output becomes:
+>
+> Wednesday
+>
+> Other day
+>
+> This is why `break` is important in a switch statement.
+
+---
+## Increment and Decrement Operators
+The `++` operator increases a value by 1, and `--` decreases a value by 1.
+
+```java
+int count = 0;
+
+count++;
+System.out.println(count); // 1
+
+count--;
+System.out.println(count); // 0
+
+++count;
+System.out.println(count); // 1
+
+--count;
+System.out.println(count); // 0
+```
+
+> `count++` is called postfix increment. It uses the old value first, then increases it.
+>
+> `++count` is called prefix increment. It increases the value first, then uses it.
+>
+> `count--` is postfix decrement. It uses the old value first, then decreases it.
+>
+> `--count` is prefix decrement. It decreases the value first, then uses it.
+>
+> These operators are often used in loops to move from one value to the next.
+
+Assignment example:
+```java
+int x = 5;
+
+int a = x++;
+System.out.println(a); // 5
+System.out.println(x); // 6
+
+int b = ++x;
+System.out.println(b); // 7
+System.out.println(x); // 7
+```
+
+> In `int a = x++;`, Java stores the old value of `x` in `a`, then increases `x`.
+>
+> In `int b = ++x;`, Java increases `x` first, then stores the new value in `b`.
+>
+> The difference is visible in the assigned value and the final value of `x`.
+
+---
+# While Loop
+A while loop is very similar to an `if` statement because both check a condition first.
+
+```java
+int count = 0;
+
+if (count < 5) {
+    System.out.println(count);
+}
+
+while (count < 5) {
+    System.out.println(count);
+    count++;
+}
+```
+
+> `if` runs its block only once when the condition is true.
+>
+> `while` runs its block repeatedly as long as the condition stays true.
+>
+> In other words, an `if` statement checks once, while a `while` loop keeps checking again and again.
+
+Example:
 ```java
 int count = 0;
 
@@ -602,12 +766,21 @@ while (count < 5) {
 }
 ```
 
+Output:
+```text
+0
+1
+2
+3
+4
+```
+
 > The condition is checked before the loop body runs.
 >
 > If the condition is false at the start, the loop body never executes.
 
-### Important warning
-A while loop can also become an infinite loop if the condition never becomes false.
+### When the condition never reaches false
+A while loop can keep running when its update moves the condition away from becoming false.
 
 ```java
 int i = 0;
@@ -617,7 +790,20 @@ while (i < 3) {
 }
 ```
 
-> This is an infinite loop because `i--` keeps decreasing, so `i < 3` stays true forever.
+> Since `i` keeps decreasing, `i < 3` stays true for a very long time. However, `int` eventually overflows, so this loop eventually ends; it is not truly infinite.
+
+An always-true condition does not reach `false`:
+
+```java
+while (true) {
+    System.out.println("Repeating");
+}
+```
+
+> The condition is always `true`, so it never reaches `false` and the loop keeps repeating.
+
+> Unlike the `int` example above, this loop is infinite unless something else stops it.
+
 
 ---
 # Do-While Loop
@@ -632,16 +818,56 @@ do {
 } while (count < 5);
 ```
 
+Output:
+```text
+0
+1
+2
+3
+4
+```
+
 > The body runs first, then the condition is checked.
 >
-> This guarantees the loop executes at least one time.
+> This guarantees the loop executes at least once.
 
 ---
 # For Loop
-A for loop repeats a block of code a fixed number of times.
+A for loop repeats a block of code while its condition is true. It is commonly used when you know how many times to repeat.
 
+### Parts of a for loop
+- Initialization: runs once before the loop begins.
+- Condition: decides whether the loop continues.
+- Update: changes the value after each cycle.
+
+Example:
 ```java
 for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+```
+
+Output:
+```text
+0
+1
+2
+3
+4
+```
+
+> `int i = 0` → initialization
+>
+> `i < 5` → condition
+>
+> `i++` → update
+
+Example with comments:
+```java
+for (int i = 0; i < 5; i++) {
+    // initialization: int i = 0
+    // condition: i < 5
+    // update: i++
     System.out.println(i);
 }
 ```
@@ -650,109 +876,30 @@ for (int i = 0; i < 5; i++) {
 >
 > It keeps running while `i < 5` is true.
 >
-> After each cycle, `i++` increases the value of `i` by 1.
+> After each cycle, `i++` updates the value.
 
-### Parts of a for loop
-A for loop has 3 main parts:
-
-1. Initialization
-   - This runs once before the loop begins.
-   - Example: `int i = 0;`
-   - You can also initialize more than one variable in the same part.
-   - Example: `int i = 0, x = 0;`
-
-2. Condition
-   - This decides whether the loop continues.
-   - Example: `i < 5;`
-   - It can also be a direct boolean value.
-   - Example: `for (int i = 0; true; i++) { ... }`
-   - This is a hard-coded condition, and it will keep looping forever unless the loop is stopped another way.
-
-3. Update
-   - This changes the variable after each loop cycle.
-   - Example: `i++` or `i += 2`
-   - You can also update more than one variable in the same part.
-   - Example: `i++, x += 2`
+### Boolean condition example
+A condition can also be a direct boolean value.
 
 ```java
-for (int i = 0; i < 5; i++) {
-    System.out.println("Value: " + i);
+for (int i = 0; true; i++) {
+    System.out.println(i);
 }
 ```
 
-> In this example:
+> A condition set to `true` never becomes false.
 >
-> - initialization: `int i = 0`
+> Because of that, the loop never stops unless something else interrupts it.
 >
-> - condition: `i < 5`
->
-> - update: `i++`
+> This creates an infinite loop.
 
-### Example: multiple variables in initialization and update
-A for loop can also initialize more than one variable, and update more than one variable in the same loop.
-
+### Multiple variables in one loop
 ```java
 for (int i = 0, x = 0; i < 3; i++, x--) {
     System.out.println("i = " + i + ", x = " + x);
 }
 ```
 
-> In this example:
->
-> - initialization: `int i = 0, x = 0`
->
-> - condition: `i < 3`
->
-> - update: `i++, x--`
->
-> This means the loop starts with both `i` and `x` set to 0.
->
-> After each round, `i` increases by 1 and `x` decreases by 1.
->
-> The loop stops when `i` becomes 3.
-
-### Example: print numbers from 1 to 5
-```java
-for (int i = 1; i <= 5; i++) {
-    System.out.println(i);
-}
-```
-
-Output:
-```text
-1
-2
-3
-4
-5
-```
-
-### Infinite loop warning
-A for loop can become an infinite loop if the condition and update contradict each other.
-
-```java
-for (int i = 0; i < 3; i--) {
-    System.out.println(i);
-}
-```
-
-> This is wrong because:
->
-> - condition: `i < 3` says the loop should keep going while `i` is less than 3
->
-> - update: `i--` decreases the value of `i`
->
-> Since `i` starts at 0 and keeps decreasing, it stays less than 3 forever.
->
-> That means the loop never stops, so it becomes an infinite loop.
-
-### Correct version
-```java
-for (int i = 0; i < 3; i++) {
-    System.out.println(i);
-}
-```
-
-> Here, the update part matches the condition: `i++` increases the value, so eventually `i` becomes 3 and the condition becomes false.
+> More than one variable can be initialized and updated in the same `for` loop.
 
 ---
