@@ -664,6 +664,9 @@ A for loop has 3 main parts:
 2. Condition
    - This decides whether the loop continues.
    - Example: `i < 5;`
+   - It can also be a direct boolean value.
+   - Example: `for (int i = 0; true; i++) { ... }`
+   - This is a hard-coded condition, and it will keep looping forever unless the loop is stopped another way.
 
 3. Update
    - This changes the variable after each loop cycle.
