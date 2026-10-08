@@ -19,9 +19,14 @@
     - [Logical Operators](#logical-operators)
 - Java Conditional Statements
     - [If Statement](#if-statement)
-    - [If-Else Statement](#if-else-statement)
-    - [If-Else If Statement](#if-else-if-statement)
-    - [If-Else If-Else Statement](#if-else-if-else-statement)
+    - [If • Else Statement](#if--else-statement)
+    - [If • Else-If Statement](#if--else-if-statement)
+    - [If • Else-If • Else Statement](#if--else-if--else-statement)
+
+- Java Loop Statements
+    - [While Loop](#while-loop)
+    - [Do-While Loop](#do-while-loop)
+    - [For Loop](#for-loop)
 
 ---
 # Java Syntax
@@ -269,7 +274,7 @@ System.out.println(score); // 25
 
 ---
 # Print Statement
-Displays output to the console; `print()` keeps the cursor on the same line, while `println()` moves it to a new line afterward.
+Displays output to the console. `print()` keeps the cursor on the same line, while `println()` moves it to a new line afterward.
 ```java
 System.out.print( value );
 System.out.println( value );
@@ -290,6 +295,63 @@ System.out.println("Java is fun.");
 > Hello, World!
 > Java is fun.
 - Since print() doesn't add a line break, "World!" continues right after "Hello, " on the same line. println() then breaks the line for the next statement.
+
+### Using printf
+`printf()` is useful when you want to format output with placeholders.
+
+```java
+System.out.printf("Hello %s", "Java");
+System.out.printf("Age: %d", 21);
+System.out.printf("Price: %.2f", 19.99f);
+```
+
+> `%s` - string placeholder
+>
+> `%d` - integer placeholder
+>
+> `%.2f` - float/double placeholder with 2 decimal places
+
+`%n` is a special newline format specifier used inside `printf()`.
+
+```java
+System.out.printf("Hello %s%n", "Java");
+System.out.printf("Age: %d%n", 21);
+System.out.printf("Price: %.2f%n", 19.99f);
+```
+
+> `%n` moves the output to the next line.
+>
+> It is used separately from `%s`, `%d`, and `%.2f`.
+
+Without `%n`:
+```java
+System.out.printf("Name: %s", name);
+System.out.printf("Age: %d", age);
+System.out.printf("Height: %.2f", height);
+```
+
+Output:
+```text
+Name: AliceAge: 18Height: 1.72
+```
+
+With `%n`:
+```java
+System.out.printf("Name: %s%n", name);
+System.out.printf("Age: %d%n", age);
+System.out.printf("Height: %.2f%n", height);
+```
+
+Output:
+```text
+Name: Alice
+Age: 18
+Height: 1.72
+```
+
+> `printf()` gives you more control over how values are displayed.
+>
+> `%n` is especially useful when you want to move to the next line inside `printf()`.
 
 ---
 ## String Concatenation
@@ -526,3 +588,168 @@ public class Main{
     }
 }
 ```
+
+---
+# While Loop
+A while loop repeats a block of code as long as a condition is true.
+
+```java
+int count = 0;
+
+while (count < 5) {
+    System.out.println(count);
+    count++;
+}
+```
+
+> The condition is checked before the loop body runs.
+>
+> If the condition is false at the start, the loop body never executes.
+
+### Important warning
+A while loop can also become an infinite loop if the condition never becomes false.
+
+```java
+int i = 0;
+
+while (i < 3) {
+    i--;
+}
+```
+
+> This is an infinite loop because `i--` keeps decreasing, so `i < 3` stays true forever.
+
+---
+# Do-While Loop
+A do-while loop runs the code block at least once before checking the condition.
+
+```java
+int count = 0;
+
+do {
+    System.out.println(count);
+    count++;
+} while (count < 5);
+```
+
+> The body runs first, then the condition is checked.
+>
+> This guarantees the loop executes at least one time.
+
+---
+# For Loop
+A for loop repeats a block of code a fixed number of times.
+
+```java
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+```
+
+> The loop starts with `int i = 0`.
+>
+> It keeps running while `i < 5` is true.
+>
+> After each cycle, `i++` increases the value of `i` by 1.
+
+### Parts of a for loop
+A for loop has 3 main parts:
+
+1. Initialization
+   - This runs once before the loop begins.
+   - Example: `int i = 0;`
+   - You can also initialize more than one variable in the same part.
+   - Example: `int i = 0, x = 0;`
+
+2. Condition
+   - This decides whether the loop continues.
+   - Example: `i < 5;`
+
+3. Update
+   - This changes the variable after each loop cycle.
+   - Example: `i++` or `i += 2`
+   - You can also update more than one variable in the same part.
+   - Example: `i++, x += 2`
+
+```java
+for (int i = 0; i < 5; i++) {
+    System.out.println("Value: " + i);
+}
+```
+
+> In this example:
+>
+> - initialization: `int i = 0`
+>
+> - condition: `i < 5`
+>
+> - update: `i++`
+
+### Example: multiple variables in initialization and update
+A for loop can also initialize more than one variable, and update more than one variable in the same loop.
+
+```java
+for (int i = 0, x = 0; i < 3; i++, x--) {
+    System.out.println("i = " + i + ", x = " + x);
+}
+```
+
+> In this example:
+>
+> - initialization: `int i = 0, x = 0`
+>
+> - condition: `i < 3`
+>
+> - update: `i++, x--`
+>
+> This means the loop starts with both `i` and `x` set to 0.
+>
+> After each round, `i` increases by 1 and `x` decreases by 1.
+>
+> The loop stops when `i` becomes 3.
+
+### Example: print numbers from 1 to 5
+```java
+for (int i = 1; i <= 5; i++) {
+    System.out.println(i);
+}
+```
+
+Output:
+```text
+1
+2
+3
+4
+5
+```
+
+### Infinite loop warning
+A for loop can become an infinite loop if the condition and update contradict each other.
+
+```java
+for (int i = 0; i < 3; i--) {
+    System.out.println(i);
+}
+```
+
+> This is wrong because:
+>
+> - condition: `i < 3` says the loop should keep going while `i` is less than 3
+>
+> - update: `i--` decreases the value of `i`
+>
+> Since `i` starts at 0 and keeps decreasing, it stays less than 3 forever.
+>
+> That means the loop never stops, so it becomes an infinite loop.
+
+### Correct version
+```java
+for (int i = 0; i < 3; i++) {
+    System.out.println(i);
+}
+```
+
+> Here, the update part matches the condition: `i++` increases the value, so eventually `i` becomes 3 and the condition becomes false.
+
+---
